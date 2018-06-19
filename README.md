@@ -1,4 +1,4 @@
-# Toy Robot Simulator [![Travis branch](https://img.shields.io/travis/JackCuthbert/toy-robot-simulator/master.svg?maxAge=3600&style=flat-square)](https://travis-ci.org/JackCuthbert/toy-robot-simulator)
+# Toy Robot Simulator
 
 
 >Notes on implementation:
