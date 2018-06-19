@@ -1,23 +1,5 @@
 # Toy Robot Simulator
 
-
->Notes on implementation:
-* Opted to use JS class methods for PLACE, MOVE, LEFT, and RIGHT instead of reading from standard input
-    * I wanted to use JS and stdin didn't make much sense considering it's designed for the browser (and as a NPM module)
-* Made heavy use of Wallaby.js for TDD when building the Robot class
-* Webpack and Webpack Dev Server was used to build the GUI w/ hot reloading
-* Made a neat little `console.log` hijack to show logging in the GUI
-* I added a render function parameter to be called every time a movement operation runs
-
-> If I spent more time on this:
-* Work out a nicer way to call the rendering callback method so I'm not repeating myself
-* Implement e2e testing for the GUI (PhantomJS/CasperJS or similar?)
-* Complete error handling for GUI
-* Add `try catch` around `new Error` calls
-* Add arrow keys to control the robot :grin:
-
-## Usage
-
 ```javascript
 import Robot from 'path/to/Robot';
 
