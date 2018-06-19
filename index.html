@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Toy Robot</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding-left: 40px;
+            font-family: "Open Sans", sans-serif;
+        }
+
+        .wrap {
+            display: flex;
+            height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .field {
+            width: 500px;
+        }
+
+        .controls {
+            width: calc(100% - 540px);
+            padding-left: 40px;
+            padding-right: 40px;
+            margin-left: 40px;
+        }
+
+        button {
+            background-color: rgb(90,90,90);
+            border: none;
+            color: rgb(240,240,240);
+            outline: none;
+            transition: all 0.1s ease-out;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background-color: rgb(74, 74, 74);
+        }
+
+        button.place {
+            color: rgb(40,40,40);
+            background-color: rgb(130,240,130);
+        }
+
+        button.place:hover {
+            background-color: rgb(96, 255, 96);
+        }
+
+        button.remove {
+            color: rgb(240,240,240);
+            background-color: rgb(250, 100, 100);
+        }
+
+        button.remove:hover {
+            background-color: rgb(255, 68, 68);
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        .control-group button,
+        .control-group input,
+        .control-group select {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .control-group.flex {
+            display: flex;
+        }
+
+        .control-group.flex button {
+            flex: 1;
+        }
+
+        .log {
+            height: 100%;
+            max-height: 175px;
+            margin-bottom: 20px;
+            overflow: auto;
+            padding: 0 20px;
+            border: 1px solid #eee;
+            font-family: monospace;
+        }
+
+        .log .log-title {
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .table {
+            margin: 0 auto;
+            width: 500px;
+            height: 500px;
+            border: 1px solid grey;
+            position: relative;
+        }
+
+        .robot {
+            display: none;
+            position: absolute;
+            width: 20%;
+            height: 20%;
+            padding: 40px 5px;
+            text-align: center;
+            background-color: rgb(80,80,250);
+            transition: bottom 0.3s ease-in-out,
+                        left 0.3s ease-in-out;
+        }
+
+        .robot::before {
+            display: block;
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background-color: rgb(250, 100, 100);
+        }
+
+        .placed {
+            display: block;
+        }
+
+        .robot[data-direction="north"] {
+            transform: rotate(0deg);
+        }
+
+        .robot[data-direction="south"] {
+            transform: rotate(180deg);
+        }
+
+        .robot[data-direction="east"] {
+            transform: rotate(90deg);
+        }
+
+        .robot[data-direction="west"] {
+            transform: rotate(270deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="field">
+            <h1>Table</h1>
+            <div class="table">
+                <div class="robot">This side up</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <h1>Controls</h1>
+            <div class="control-group main">
+
+                <label>X Coordinate</label>
+                <input class='placeX' type='number' value='0' />
+
+                <label>Y Coordinate</label>
+                <input class='placeY' type='number' value='0' />
+
+                <label>Direction Facing</label>
+                <select class='placeDirection'>
+                    <option value='NORTH' selected="selected">North</option>
+                    <option value='SOUTH'>South</option>
+                    <option value='EAST'>East</option>
+                    <option value='WEST'>West</option>
+                </select>
+
+                <button class="place">Place</button>
+            </div>
+            <div class="log">
+                <h2 class="log-title"></h2>
+                <div class="log-content"></div>
+            </div>
+            <div class="control-group flex">
+                <button class="move">Move</button>
+                <button class="rotateLeft">Rotate Left</button>
+                <button class="rotateRight">Rotate Right</button>
+                <button class="report">Report</button>
+                <button class="remove">Remove</button>
+            </div>
+        </div>
+    </div>
+    <script src="/bundle.js"></script>
+</body>
+</html>
